@@ -92,6 +92,10 @@ function renderCourse(course)
     if (course.classBy.length === 0) {
         course.classBy = "No Class";
     }
+    var options= [];
+    for (var i = 0; i < course.classBy.length; i++) {
+        options.push(`<option value="${course.classBy[i]}">${course.classBy[i]}</option>`);
+    }
     return `
     <div class = "course1">
         <div class = "course-container">
@@ -110,7 +114,7 @@ function renderCourse(course)
                         course.classBy !== "No Class" ?
                         `
                             <select class="remove-styles course-sel" name="course-select">
-                                <option value="all" selected>${course.classBy}</option>
+                                ${options}
                             </select>
                             <p class="course-writing">${bottomLine}</p>
                         ` :
